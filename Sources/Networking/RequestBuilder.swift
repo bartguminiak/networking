@@ -11,8 +11,8 @@ protocol RequestBuilderType {
 
 class RequestBuilder: RequestBuilderType {
 
-    init(keychainAccess: KeychainAccessType) {
-        self.keychainAccess = keychainAccess
+    init(baseUrlProvider: BaseUrlProviderType) {
+        self.baseUrlProvider = baseUrlProvider
     }
 
     func buildRequest(from apiRequest: ApiRequest) throws -> URLRequest {
@@ -48,12 +48,10 @@ class RequestBuilder: RequestBuilderType {
 
     // MARK: - Privates
 
-    private let keychainAccess: KeychainAccessType
+    private let baseUrlProvider: BaseUrlProviderType
 
     private var baseUrl: URL? {
-        guard let data = keychainAccess.load(key: KeychainAccess.phoneDataKey) else { return nil }
-        guard let baseUrlString = try? data.to(type: PhoneUserInfo.self).baseUrl else { return nil }
-        return URL(string: baseUrlString)
+        URL(string: baseUrlProvider.baseUrl)
     }
 
     private func constructUrl(fromString urlString: String) -> URL? {
