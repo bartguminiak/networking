@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     func scaledImage(to targetSize: CGSize) -> UIImage {
         let size = self.size
 

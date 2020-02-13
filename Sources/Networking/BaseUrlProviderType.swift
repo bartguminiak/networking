@@ -1,3 +1,3 @@
-protocol BaseUrlProviderType {
+public protocol BaseUrlProviderType {
     var baseUrl: String { get }
 }

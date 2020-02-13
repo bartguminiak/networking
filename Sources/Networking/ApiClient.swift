@@ -1,15 +1,15 @@
 import Foundation
 
-protocol ApiClientType {
+public protocol ApiClientType {
     func fetchRequest<T: Decodable>(_ request: ApiRequest, completion: @escaping (T) -> Void)
 }
 
-class ApiClient: ApiClientType {
+public class ApiClient: ApiClientType {
 
-    init(requestBuilder: RequestBuilderType,
-         requestInterceptor: RequestInterceptorType,
-         session: URLSession = URLSession.shared,
-         responseDecoder: ResponseDecoderType = ResponseDecoder()) {
+    public init(requestBuilder: RequestBuilderType,
+                requestInterceptor: RequestInterceptorType,
+                session: URLSession = URLSession.shared,
+                responseDecoder: ResponseDecoderType = ResponseDecoder()) {
         self.requestBuilder = requestBuilder
         self.requestInterceptor = requestInterceptor
         self.session = session
@@ -18,7 +18,7 @@ class ApiClient: ApiClientType {
 
     // MARK: - ApiClientType
 
-    func fetchRequest<T: Decodable>(_ request: ApiRequest, completion: @escaping (T) -> Void) {
+    public func fetchRequest<T: Decodable>(_ request: ApiRequest, completion: @escaping (T) -> Void) {
         guard let urlRequest = try? createUrlRequest(from: request) else { return }
 
         let task = session.dataTask(with: urlRequest) { data, response, error in

@@ -1,21 +1,21 @@
 import Foundation
 import UIKit
 
-enum RequestBuilderError: Error {
+public enum RequestBuilderError: Error {
     case invalidUrl
 }
 
-protocol RequestBuilderType {
+public protocol RequestBuilderType {
     func buildRequest(from: ApiRequest) throws -> URLRequest
 }
 
-class RequestBuilder: RequestBuilderType {
+public class RequestBuilder: RequestBuilderType {
 
-    init(baseUrlProvider: BaseUrlProviderType) {
+    public init(baseUrlProvider: BaseUrlProviderType) {
         self.baseUrlProvider = baseUrlProvider
     }
 
-    func buildRequest(from apiRequest: ApiRequest) throws -> URLRequest {
+    public func buildRequest(from apiRequest: ApiRequest) throws -> URLRequest {
         guard let url = constructUrl(fromString: apiRequest.resourcePath) else { throw RequestBuilderError.invalidUrl }
 
         var urlRequest: URLRequest

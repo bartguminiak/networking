@@ -1,3 +1,3 @@
-protocol UserAccessTokenType {
+public protocol UserAccessTokenType {
     var token: String? { get }
 }

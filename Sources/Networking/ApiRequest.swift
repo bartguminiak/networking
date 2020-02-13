@@ -1,13 +1,13 @@
 import Foundation
 
-protocol ApiRequest {
+public protocol ApiRequest {
     var resourcePath: String { get }
     var method: ApiRequestMethod { get }
     var params: [String: Any] { get }
     var options: [ApiRequestOption] { get }
 }
 
-extension ApiRequest {
+public extension ApiRequest {
     var params: [String: Any] {
         return [:]
     }
@@ -17,7 +17,7 @@ extension ApiRequest {
     }
 }
 
-enum ApiRequestMethod: String {
+public enum ApiRequestMethod: String {
     case get = "GET"
     case post = "POST"
     case delete = "DELETE"
@@ -25,7 +25,7 @@ enum ApiRequestMethod: String {
     case put = "PUT"
 }
 
-enum ApiRequestOption {
+public enum ApiRequestOption {
     case cache
     case json
 }

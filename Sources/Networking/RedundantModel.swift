@@ -1,3 +1,3 @@
-struct RedundantModel: Decodable {
-    init() {}
+public struct RedundantModel: Decodable {
+    public init() {}
 }

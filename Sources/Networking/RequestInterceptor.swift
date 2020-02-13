@@ -1,18 +1,18 @@
 import Foundation
 
-protocol RequestInterceptorType {
+public protocol RequestInterceptorType {
     func addHeaders(to request: URLRequest) -> URLRequest
 }
 
-class RequestInterceptor: RequestInterceptorType {
+public class RequestInterceptor: RequestInterceptorType {
 
-    init(userAccessToken: UserAccessTokenType) {
+    public init(userAccessToken: UserAccessTokenType) {
         self.userAccessToken = userAccessToken
     }
 
     // MARK: - RequestInterceptor
 
-    func addHeaders(to request: URLRequest) -> URLRequest {
+    public func addHeaders(to request: URLRequest) -> URLRequest {
         var newRequest = request
 
         if let token = self.userAccessToken.token {
