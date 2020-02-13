@@ -1,3 +1,3 @@
 # Networking
 
-A description of this package.
+A simple networking library 🐴

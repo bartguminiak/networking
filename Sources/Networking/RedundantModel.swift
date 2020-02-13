@@ -1,0 +1,3 @@
+struct RedundantModel: Decodable {
+    init() {}
+}
